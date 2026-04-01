@@ -1,40 +1,20 @@
-#include "Number.h"
-#include <iostream>
+#include<iostream>
 using namespace std;
-
+float operator"" _Kelvin(long double kelvin)
+{
+	float celsius = kelvin - 273.15f;
+	return celsius;
+}
+float operator"" _Fahrenheit(long double fahrenheit)
+{
+	float celsius = (fahrenheit - 32.0f) * 5.0f / 9.0f;
+	return celsius;
+}
 int main()
 {
-    Number n1("10110010", 2);
-    Number n2("734", 8);
-    Number n3("FF", 16);
-
-    printf("n1 has %d digits and it is written in base %d\n", n1.GetDigitsCount(), n1.GetBase());
-    for (int tr = 0; tr < n1.GetDigitsCount(); tr++)
-    {
-        printf("n1[%d]=%c\n", tr, n1[tr]);
-    }
-    n1.Print();
-    n2.Print();
-    n1 = (n2 + n3 - n1) + n1;
-    n1.SwitchBase(2);
-    n1.Print();
-
-    if (n1 > n2)
-        printf("n1 is bigger than n2\n"); 
-    else
-        printf("n2 is bigger than n1\n");
-
-    Number n4 = 12345;
-    n1 = 255; 
-    n4 += n1;
-    n4.Print();
-
-    n4 = "13579"; 
-    n4.Print();
-    --n4;
-    n4.Print();
-    n4--; 
-    n4.Print();
-
-    return 0;
+	float a = 300.0_Kelvin;
+	cout << "Kelvin->Celsius: " << "300.0 Kelvin -> " << a <<" Celsius" << endl;
+	float b = 120.0_Fahrenheit;
+	cout << "Fahrenheitn->Celsius: " << "120.0 Fahreinheit -> " << b << " Celsius" << endl;
+	return 0;
 }
